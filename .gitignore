@@ -1,0 +1,6 @@
+dataset/*.csv
+*.pkl
+venv/
+__pycache__/
+*.pyc
+evaluation_report.png
