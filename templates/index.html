@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake News Detector 📰</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Fake News Detection</h1>
+        <p>Analyze news articles and verify authenticity instantly!</p>
+    </header>
+
+    <main>
+        <div class="card">
+            <form action="/predict" method="POST">
+                <label for="news">Paste News Article:</label>
+                <textarea id="news" name="news" placeholder="Enter the news article here..." required></textarea>
+                <button type="submit">Check News</button>
+            </form>
+
+            {% if prediction %}
+            <div class="result {% if 'Fake' in prediction %}fake{% else %}real{% endif %}">
+                <h2>{{ prediction }}</h2>
+            </div>
+            {% endif %}
+        </div>
+    </main>
+
+    <footer>
+        <p>Fake News Detection Machine Learning...</p>
+    </footer>
+</body>
+</html>
